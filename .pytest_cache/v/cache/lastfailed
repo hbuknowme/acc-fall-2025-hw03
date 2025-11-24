@@ -1,0 +1,4 @@
+{
+  "src/tests/homework/e_functions/test_functions.py::TestPayrollFunctions": true,
+  "tests/homework/c_decisions/test_decisions.py::TestFunctions": true
+}

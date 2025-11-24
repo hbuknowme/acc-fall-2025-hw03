@@ -1,35 +1,32 @@
-import os
-import sys
-import pytest
-
-# Add project root (folder that contains "src" and "tests") to Python path
-project_root = os.path.dirname(
-    os.path.dirname(
-        os.path.dirname(
-            os.path.dirname(os.path.abspath(__file__))
-        )
-    )
+import unittest
+from src.e_functions.value_return_functions import (
+    get_gross_pay,
+    get_fica_tax,
+    get_federal_tax
 )
-sys.path.append(project_root)
 
-from src.homework.c_decisions.decisions import get_letter_grade
+class TestFunctions(unittest.TestCase):
 
+    def test_payroll_case1(self):
+        hours = 40
+        rate = 10
+        gross = get_gross_pay(hours, rate)
+        self.assertEqual(gross, 400)
+        self.assertAlmostEqual(get_fica_tax(gross), 30.6, places=2)
+        self.assertAlmostEqual(get_federal_tax(gross), 32.0, places=2)
 
-def test_letter_grade_A():
-    assert get_letter_grade(95) == "A"
+    def test_payroll_case2(self):
+        hours = 45
+        rate = 10
+        gross = get_gross_pay(hours, rate)
+        self.assertEqual(gross, 475)
+        self.assertAlmostEqual(get_fica_tax(gross), 36.34, places=2)
+        self.assertAlmostEqual(get_federal_tax(gross), 38.0, places=2)
 
-
-def test_letter_grade_B():
-    assert get_letter_grade(85) == "B"
-
-
-def test_letter_grade_C():
-    assert get_letter_grade(75) == "C"
-
-
-def test_letter_grade_D():
-    assert get_letter_grade(65) == "D"
-
-
-def test_letter_grade_F():
-    assert get_letter_grade(50) == "F"
+    def test_payroll_case3(self):
+        hours = 30
+        rate = 10
+        gross = get_gross_pay(hours, rate)
+        self.assertEqual(gross, 300)
+        self.assertAlmostEqual(get_fica_tax(gross), 22.95, places=2)
+        self.assertAlmostEqual(get_federal_tax(gross), 24.0, places=2)
