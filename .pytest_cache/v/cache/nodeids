@@ -1,0 +1,13 @@
+[
+  "src/tests/homework/e_functions/test_functions.py::TestPayrollFunctions::test_payroll_case1",
+  "src/tests/homework/e_functions/test_functions.py::TestPayrollFunctions::test_payroll_case2",
+  "src/tests/homework/e_functions/test_functions.py::TestPayrollFunctions::test_payroll_case3",
+  "tests/homework/c_decisions/test_decisions.py::TestFunctions::test_payroll_case1",
+  "tests/homework/c_decisions/test_decisions.py::TestFunctions::test_payroll_case2",
+  "tests/homework/c_decisions/test_decisions.py::TestFunctions::test_payroll_case3",
+  "tests/homework/c_decisions/test_decisions.py::test_letter_grade_A",
+  "tests/homework/c_decisions/test_decisions.py::test_letter_grade_B",
+  "tests/homework/c_decisions/test_decisions.py::test_letter_grade_C",
+  "tests/homework/c_decisions/test_decisions.py::test_letter_grade_D",
+  "tests/homework/c_decisions/test_decisions.py::test_letter_grade_F"
+]
