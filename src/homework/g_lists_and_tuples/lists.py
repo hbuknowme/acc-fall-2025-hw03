@@ -1,16 +1,17 @@
-def get_lowest_list_value(numbers):
-    # manually find the smallest number without using min()
-    lowest = numbers[0]
-    for num in numbers:
-        if num < lowest:
-            lowest = num
-    return lowest
+# Calculates p-distance between two DNA strings
+def get_p_distance(list1, list2):
+    differences = 0
+    for i in range(len(list1)):
+        if list1[i] != list2[i]:
+            differences += 1
+    return differences / len(list1)
 
+# Builds the full p-distance matrix between multiple DNA strings
+def get_p_distance_matrix(dna_lists):
+    size = len(dna_lists)
+    matrix = [[0] * size for _ in range(size)]
 
-def get_highest_list_value(numbers):
-    # manually find the largest number without using max()
-    highest = numbers[0]
-    for num in numbers:
-        if num > highest:
-            highest = num
-    return highest
+    for i in range(size):
+        for j in range(size):
+            matrix[i][j] = round(get_p_distance(dna_lists[i], dna_lists[j]), 5)
+    return matrix

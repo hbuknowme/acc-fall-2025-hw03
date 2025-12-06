@@ -1,24 +1,29 @@
-import sys
-import os
-
-# Fix the path to src (go up 3 levels)
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../src')))
-
 import unittest
-from src.homework.g_lists_and_t_tuples.lists import get_lowest_list_value, get_highest_list_value
+from src.homework.g_lists_and_tuples.lists import get_p_distance, get_p_distance_matrix
 
+class Test_Config(unittest.TestCase):
 
-class TestConfig(unittest.TestCase):
-    def test_get_lowest_list_value(self):
-        numbers = [8, 10, 1, 50, 20]
-        result = get_lowest_list_value(numbers)
-        self.assertEqual(result, 1)
+    def test_get_p_distance(self):
+        list1 = ['T','T','T','C','C','A','T','T','T','A']
+        list2 = ['G','A','T','T','C','A','T','T','T','C']
+        result = get_p_distance(list1, list2)
+        self.assertAlmostEqual(result, 0.4, places=5)
 
-    def test_get_highest_list_value(self):
-        numbers = [8, 10, 1, 50, 20]
-        result = get_highest_list_value(numbers)
-        self.assertEqual(result, 50)
-
+    def test_get_p_distance_matrix(self):
+        dna_lists = [
+            ['T','T','T','C','C','A','T','T','T','A'],
+            ['G','A','T','T','C','A','T','T','T','C'],
+            ['T','T','T','C','C','A','T','T','T','T'],
+            ['G','T','T','C','C','A','T','T','T','A']
+        ]
+        expected = [
+            [0.0, 0.4, 0.1, 0.1],
+            [0.4, 0.0, 0.4, 0.3],
+            [0.1, 0.4, 0.0, 0.2],
+            [0.1, 0.3, 0.2, 0.0]
+        ]
+        result = get_p_distance_matrix(dna_lists)
+        self.assertEqual(result, expected)
 
 if __name__ == '__main__':
     unittest.main()
